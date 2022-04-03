@@ -2,14 +2,18 @@ import './styles/style.css'
 import './App.css';
 import Navbar from './components/navbar';
 import { Fragment } from 'react';
-import Home from './containers/home';
+import Singles from './containers/single';
+
+
 
 
 function App() {
   return (
     <Fragment>
     <Navbar/>
-    <Home/>
+    <Singles/>
+    
+   
     
     </Fragment>
     
