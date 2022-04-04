@@ -347,3 +347,104 @@ padding-top: 50px;
   border-radius: 10px;
   object-fit: cover;
 }
+/* userProfile starts here */
+.profile{
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-bottom: 50px;
+}
+.profileWrapper{
+  display: grid;
+  grid-template-columns: 3fr 1fr 5fr;
+}
+.profileImage{
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.changeIcon{
+  margin-top: 150px;
+  margin-right: 300px;
+  width: 65px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid;
+  font-size: 10px;
+  color: #a7a4a4;
+  cursor: pointer;
+
+}
+.profileName{
+  margin-left: -80px;
+  margin-top: 130px;
+  font-size: 18px;
+  margin-right: 10px;
+  font-family: serif;
+  font: weight 600px;
+}
+/* user settings starts here */
+.userSettings{
+  width: 80%;
+  padding: 20px;
+  margin: 40px;
+  margin-left: 100px;
+
+
+}
+.settingsHeader{
+  font-size: 18px;
+  font-family: serif;
+  font-weight:600px;
+  text-align: center;
+}
+.settingsTitle{
+  border-bottom: 1px solid black;
+}
+.settingsButtons{
+margin-top: 30px;
+
+ 
+}
+.cancelDetails{
+margin-left: 40px;
+  color: 
+  white;
+  background: rgb(241, 13, 13);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  cursor: pointer;
+  font-size: 16px;
+
+}
+
+.submitDetails{
+   margin-left: 70%;
+  color: 
+  white;
+  background: rgb(32, 234, 150);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  cursor: pointer;
+  font-size: 16px;
+
+}
+
+
+/* settings starts here */
+.settings{
+  display: flex;
+
+}
+.settingWrapper{
+  flex: 9;
+  margin-top: 30px;
+  background-color: wheat;
+  margin-left: 30px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+}

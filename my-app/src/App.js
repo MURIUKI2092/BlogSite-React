@@ -2,7 +2,10 @@ import './styles/style.css'
 import './App.css';
 import Navbar from './components/navbar';
 import { Fragment } from 'react';
-import Write from './containers/write';
+import Settings from './containers/settings';
+
+
+
 
 
 
@@ -12,7 +15,8 @@ function App() {
   return (
     <Fragment>
     <Navbar/>
-    <Write/>
+  <Settings/>
+  
     
     
    
