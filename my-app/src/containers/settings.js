@@ -6,7 +6,9 @@ import UserSettings from '../components/userSettings'
 const Settings = () => {
   return (
     <div className='settings'>
-      <div className='settingWrapper'>
+      
+      <div className='settingWrapper'>{/* 
+      <div className='settingHeader'>Update Your Profile</div> */}
         <Profile/>
         <UserSettings/>
       </div>

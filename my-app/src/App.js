@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/navbar';
 import { Fragment } from 'react';
 import Settings from './containers/settings';
+import Footer from './components/footer';
 
 
 
@@ -16,6 +17,7 @@ function App() {
     <Fragment>
     <Navbar/>
   <Settings/>
+  <Footer/>
   
     
     
