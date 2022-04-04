@@ -517,3 +517,7 @@ margin-left: 40px;
 .socialsInfo{
   flex: 1.5;
 }
+.signIn{
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+}
