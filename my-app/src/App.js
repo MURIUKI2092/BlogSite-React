@@ -2,7 +2,8 @@ import './styles/style.css'
 import './App.css';
 import Navbar from './components/navbar';
 import { Fragment } from 'react';
-import Singles from './containers/single';
+import Write from './containers/write';
+
 
 
 
@@ -11,7 +12,8 @@ function App() {
   return (
     <Fragment>
     <Navbar/>
-    <Singles/>
+    <Write/>
+    
     
    
     
