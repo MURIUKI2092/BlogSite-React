@@ -4,6 +4,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import SearchIcon from '@mui/icons-material/Search';
+import { NavLink, Link} from 'react-router-dom';
 
 
 const Navbar =()=>{
@@ -18,11 +19,12 @@ const Navbar =()=>{
       </div>
       <div className='topCenter'>
         <ul className='TopList'>
-              <li className='topListItem'>HOME</li>
-              <li className='topListItem'>ABOUT</li>
-              <li className='topListItem'>CONTACT</li>
-              <li className='topListItem'>WRITE</li>
-              <li className='topListItem'>LOGOUT</li>
+              <Link  to='/home' className='topListItem'>HOME</Link>
+              <Link  to='/home' className='topListItem'>ABOUT</Link>
+              <Link  to='/home/settings' className='topListItem'>CONTACT</Link>
+              <Link  to='/write' className='topListItem'>WRITE</Link>
+              <Link  to='/' className='topListItem'>LOGOUT</Link>
+          
 
         </ul>
 

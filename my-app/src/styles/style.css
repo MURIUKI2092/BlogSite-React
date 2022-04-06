@@ -45,11 +45,18 @@
   list-style: none;
 }
 .topListItem{
+  text-decoration: none;
   margin-right: 20px;
   font-size: 18px;
   font-weight: 300;
   cursor: pointer;
+  color: black;
 }
+.topListItem:hover{
+  color: #666;
+
+}
+
 .searchIcon{
   font-size: 20px;
   color: #666;
@@ -546,7 +553,8 @@ margin-left: 40px;
   display: flex;
 
 }
-.startJourney ul li{
+.startJourney ul .LandListItem{
+  text-decoration: none;
   list-style: none;
   font-size: 20px;
   font-family: serif;

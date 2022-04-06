@@ -15,7 +15,7 @@ import Container from '@mui/material/Container';
 
 
 
-export default function SignUp() {
+const SignUp =()=> {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -116,3 +116,4 @@ export default function SignUp() {
     
   );
 }
+export default SignUp
