@@ -10,7 +10,10 @@ const Footer = () => {
     <div className='footer'>
       <div className='footerDetails'>
         <div  className='details1'>
-        Title here and other Info
+        <img className=''
+        src="https://diginomica.com/sites/default/files/styles/article_images_desktop/public/images/2015-06/100daysbl.png.webp?itok=YDBNNFco"
+        alt=""
+        />
         </div>
         <div  className='details2'>
         <h2>Our Products</h2>
