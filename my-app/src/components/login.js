@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  {React,useContext,useRef} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,17 +11,35 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { Context } from '../context/context';
+import axios from 'axios';
+
 
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+
+  const userRef = useRef()
+  const passwordRef = useRef()
+  const { dispatch,isFetching}= useContext(Context)
+  const handleSubmit =async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    dispatch({type:"LOGIN_START"})
+    try{
+      const response=await axios.post("/auth/login",{
+        email:userRef.current.value,
+        password:passwordRef.current.value
+
+      })
+      dispatch({type:"LOGIN_SUCCESS",update:response.data})
+
+    }catch(err){
+      dispatch({type:"LOGIN_FAILURE"})
+    }
+    
+   
   };
+  
+
 
   return (
     
@@ -46,11 +64,12 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="username"
+              name="username"
+              autoComplete="username"
               autoFocus
+              ref={userRef}
             />
             <TextField
               margin="normal"
@@ -61,12 +80,14 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              ref ={passwordRef}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
             <Button
+            disabled={isFetching}
               type="submit"
               fullWidth
               variant="contained"

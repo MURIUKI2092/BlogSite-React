@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "../src/containers/landingPage";
 import Home from "../src/containers/home";
@@ -10,8 +10,10 @@ import SignUp from "./components/registration";
 import Singles from "./containers/single";
 import Write from "./containers/write";
 import { Posts } from "./containers/posts";
+import { Context } from "./context/context";
 
 const Router = () => {
+  const {user}=useContext(Context)
   return (
     <BrowserRouter>
     <Navbar/>
