@@ -32,6 +32,7 @@
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;
 }
 .topCenter{
   flex: 6;
@@ -239,6 +240,9 @@ align-items: center;
 .singlePostWrapper{
   padding: 20px;
   padding-right: 0;
+  display: flex;
+  flex-direction: column;
+
 
 
 }
@@ -255,6 +259,18 @@ align-items: center;
   font-family:cursive;
   font-size: 30px;
 
+}
+.singlePostTitleInput{
+  text-align: center;
+  margin: 10px;
+  font-family:cursive;
+  font-size: 30px;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+
+}
+.singlePostTitleInput:focus{
+  outline: none;
 }
 .singlePostEdit{
   float: right;
@@ -285,6 +301,29 @@ align-items: center;
   font-size: 18px;
 
   line-height: 25px;
+
+}
+.singlePostDescriptionInput{
+  border: none;
+  color: #666;
+  font-size: 18px;
+
+  line-height: 25px;
+}
+.singlePostDescriptionInput:focus{
+  outline: none;
+}
+.singlePostDesc{
+  border: none;
+  background: teal;
+  padding: 5px;
+  width: 100px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 20px;
+
 
 }
 .singlePostDescription::first-letter{
@@ -592,4 +631,66 @@ margin-left: 40px;
 .ErrorMessage{
   color: red;
   font-size: 14px;
+}
+.login {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.unsplash.com/photo-1510519138101-570d1dca3d66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=847&q=80");
+  background-size: cover;
+}
+
+.loginTitle {
+  font-size: 50px;
+}
+
+.loginForm {
+  margin-top: 20px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm > label {
+  margin: 10px 0;
+}
+
+.loginInput {
+  padding: 10px;
+  background-color: white;
+  border: none;
+}
+
+.loginButton {
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: lightcoral;
+  border: none;
+  width: 100px;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.loginButton:disabled{
+  cursor: not-allowed;
+  background-color: rgb(252, 173, 173);
+}
+
+.loginRegisterButton {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: teal;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
 }

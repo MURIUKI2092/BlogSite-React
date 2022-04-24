@@ -1,6 +1,6 @@
 import './styles/style.css'
 import './App.css';
-import { Fragment } from 'react';
+import { Fragment, useContext, useState, useMemo } from 'react';
 import Home from './containers/home';
 import Router from './Router'
 import LandingPage from './containers/landingPage';
@@ -10,11 +10,13 @@ import SignUp from './components/registration';
 import Singles from './containers/single';
 import Write from './containers/write';
 import { Posts } from './containers/posts';
+import {userContext} from './context/userContext'
 
 function App() {
+ 
   return (
 
-    <>   
+      
     <Router>
    <LandingPage /> 
    <SignIn/>
@@ -22,11 +24,11 @@ function App() {
    <Singles/>
    <Write/>
    <Posts/>
-       <Home/>
-   <Settings />
+    <Home/>
+     <Settings />
     </Router>
     
-    </>
+   
     
    
     
