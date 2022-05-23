@@ -1,10 +1,22 @@
 import React from 'react'
+import axios from "axios"
+import { Link } from 'react-router-dom';
+import { useState,useEffect } from 'react';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import InstagramIcon from '@mui/icons-material/Instagram';
 
 const SideBar = () => {
+  const [category,setCategory]= useState([]);
+
+  useEffect(()=>{
+    const getCategory = async ()=>{
+      const response= await axios.get("/categories")
+      setCategory (response.data);
+    }
+    getCategory()
+  },[])
   return (
     <div className='sidebar'>
       <div className='sidebarItem'>
@@ -18,12 +30,13 @@ const SideBar = () => {
       <div className='sidebarItem'>
         <span className='sidebarTitle'>CATEGORIES </span><br></br>
         <ul className='sidebarList'>
-          <li className='sidebarListItem'>Life</li>
-          <li className='sidebarListItem'>Music</li>
-          <li className='sidebarListItem'>Sports</li>
-          <li className='sidebarListItem'>Movies</li>
-          <li className='sidebarListItem'>Tech</li>
-          <li className='sidebarListItem'>Style</li>
+          {category.map((cat)=>(
+            <Link to={`/home/?cat=${cat.name}`} className='topListItem'><li className='sidebarListItem'>{cat.name}</li></Link>
+            
+
+          ))}
+          
+        
 
         </ul>
             </div>

@@ -1,36 +1,117 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import {useEffect} from 'react';
+import axios from 'axios';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// import { Context } from '../context/context';
 
 const SinglePost = () => {
+  const location =useLocation();
+  const path = location.pathname.split("/")[2]
+  const [post,setPost]=useState({})
+  const publicFolder="http://localhost:5000/images/"
+  // const {user} =useContext(Context)
+  const[title,setTitle] = useState(" ")
+  const [desc,setDesc]= useState(" ");
+  const[updateMode,setUpdateMode]= useState(false);
+
+  useEffect(()=>{
+    const getSinglePost = async ()=>{
+      const response = await axios.get("/posts/"+path);
+      setPost(response.data);
+      setTitle(response.data.title);
+      setDesc(response.data.desc)
+      
+            
+    };
+     getSinglePost()
+
+  },[path])
+  const handleDelete = async()=>{
+    try{
+      await axios.delete(`/posts/${post._id}`,{
+        // data:{username:user.username}
+      })
+
+    }catch(err){
+
+    }
+    
+  }
+  const handleUpdate = async()=>{
+    try{
+      await axios.put(`/posts/${post._id}`,{
+        // username:user.username
+        title,
+        desc
+      })
+  
+    }catch(err){
+
+    }
+  }
+  
+ 
   return (
     <div className='singlePost'>
       <div className='singlePostWrapper'>
-      <img
-      className='singlePostImg'
-      src='https://images.unsplash.com/photo-1577375729152-4c8b5fcda381?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80'
-      alt=''
-      />
-      <h1 className='singlePostTitle'>
-      lorem lorem lorem lorem.
-      <div className='singlePostEdit'>
-        <EditIcon className='singlePostIcon'/>
-        <DeleteIcon className='singlePostIcon'/>
-      </div>
+        {post.photo &&(
+           <img
+           className='singlePostImg'
+           src={publicFolder + post.photo}
+           alt=""
+                      />
+        )}
+        {
+          updateMode?<input
+           type={"text"}
+            value={title}
+             className="singlePostTitleInput"
+             autoFocus
+             onChange={(e)=>setTitle(e.target.value)}
+             />:(
+            <h1 className='singlePostTitle'>
+            {post.title}
+            {/* {post.username ===user?.username && */}
+            <div className='singlePostEdit'>
+                    <EditIcon className='singlePostIcon' onClick ={()=>setUpdateMode(true)}/>
+                    <DeleteIcon className='singlePostIcon' onClick ={handleDelete}/>
+          </div>
+            {/* } */}
+            
+      
+            </h1>
 
-      </h1>
+          )
+        }
+    
+   
       <div className='singlePostInfo'>
-        <span className='singlePostAuthor' > Author: <b>Muriuki</b></span>
-        <span className='singlePostDate' >1 day ago</span>
+        <span className='singlePostAuthor' > Author: 
+        <Link to={`/home/?user=${post.username}`} className="topListItem" >
+        <b>{post.username}</b>
+        </Link></span>
+        <span className='singlePostDate' >{new Date(post.createdAt).toDateString()}</span>
       </div>
-      <p className='singlePostDescription'>Agree with @JeyDWork, this solution should be flagged as potential security risk. If your package.json doesn't contain confidential data now, who will guarantee that other developers won't put it there years later, without knowing that it is exposed to production? And even without any secrets, normally, a business doesn't want to expose information about its dependencies and devDependencies from the package.json to everybody - it makes it easier to 
-find vulnerabilities and penetrate the application.
-Agree with @JeyDWork, this solution should be flagged as potential security risk. If your package.json doesn't contain confidential data now, who will guarantee that other developers won't put it there years later, without knowing that it is exposed to production? And even without any secrets, normally, a business doesn't want to expose information about its dependencies and devDependencies from the package.json to everybody - it makes it easier to 
-find vulnerabilities and penetrate the application.
-Agree with @JeyDWork, this solution should be flagged as potential security risk. If your package.json doesn't contain confidential data now, who will guarantee that other developers won't put it there years later, without knowing that it is exposed to production? And even without any secrets, normally, a business doesn't want to expose information about its dependencies and devDependencies from the package.json to everybody - it makes it easier to 
-find vulnerabilities and penetrate the application.
-Agree with @JeyDWork, this solution should be flagged as potential security risk. If your package.json doesn't contain confidential data now, who will guarantee that other developers won't put it there years later, without knowing that it is exposed to production? And even without any secrets, normally, a business doesn't want to expose information about its dependencies and devDependencies from the package.json to everybody - it makes it easier to 
-find vulnerabilities and penetrate the application.</p>
+      {
+        updateMode ?(<textarea 
+          className='singlePostDescription' 
+          value={desc} 
+          onChange={(e)=>setDesc(e.target.value)}/>):(
+          <p className='singlePostDescription'>
+        {post.desc}.</p>
+        )
+      }
+      {updateMode &&(
+         <button className='singlePostDesc'
+         onClick={handleUpdate}
+         >Update
+         </button>
+      )}
+     
+      
       </div>
     </div>
   )

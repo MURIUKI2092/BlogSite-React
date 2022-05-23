@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import SearchIcon from '@mui/icons-material/Search';
+import { NavLink, Link} from 'react-router-dom';
+import { userContext } from '../context/userContext';
 
 
-const Navbar =()=>{
+
+const Navbar =({user})=>{
+ 
+  
+  const handleLogout=()=>{
+   
+  }
+
   return(
     <section className='navbar'>
       <div className='topLeft'>
@@ -18,20 +27,32 @@ const Navbar =()=>{
       </div>
       <div className='topCenter'>
         <ul className='TopList'>
-              <li className='topListItem'>HOME</li>
-              <li className='topListItem'>ABOUT</li>
-              <li className='topListItem'>CONTACT</li>
-              <li className='topListItem'>WRITE</li>
-              <li className='topListItem'>LOGOUT</li>
+              <Link  to='/home' className='topListItem'>HOME</Link>
+              <Link  to='/home' className='topListItem'>ABOUT</Link>
+              <Link  to='/home/settings' className='topListItem'>CONTACT</Link>
+              <Link  to='/write' className='topListItem'>WRITE</Link>
+              <Link  to='/' className='topListItem' onClick={handleLogout}>{user && "LOGOUT"}</Link>
+          
 
         </ul>
 
       </div>
       <div className='topRight'>
+      {user ?
+      (
+        <Link to="/home/settings">
         <img className='topImage'
-        src="https://images.unsplash.com/photo-1647858881692-cd17fd80cf51?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+        src={user.profilePic}
         alt=""
-        />
+        /> 
+        </Link>
+        
+      ):(
+        <ul className='TopList'>
+        <Link  to='/login' className='topListItem'>Login</Link>
+         <Link  to='/register' className='topListItem'>register</Link>
+         </ul>
+      )}
         <SearchIcon className='searchIcon'/>
 
 

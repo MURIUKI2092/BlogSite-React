@@ -1,5 +1,6 @@
 import React from 'react'
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import { Link } from 'react-router-dom';
  const Landing = () => {
   return (
     <div  className='landing'>
@@ -10,11 +11,11 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
         <div className='startJourney'>
         <ul className='LandList'>
-              <li className='LandListItem'>Start your Journey    </li>
+              <Link to='/register' className='LandListItem'>Start your Journey    </Link>
         </ul>
         
         <ul className='LandList'>
-              <li className='LandListItem'><ArrowRightAltIcon className="landIcon"/>  </li>
+              <Link  to='/register' className='LandListItem'><ArrowRightAltIcon className="landIcon"/>  </Link>
 
         </ul>
  

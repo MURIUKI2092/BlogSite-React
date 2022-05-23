@@ -1,39 +1,36 @@
 import './styles/style.css'
 import './App.css';
-import Navbar from './components/navbar';
-import { Fragment } from 'react';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-
-
-import Footer from './components/footer';
-
+import { Fragment, useContext, useState, useMemo } from 'react';
+import Home from './containers/home';
+import Router from './Router'
 import LandingPage from './containers/landingPage';
-
-
-
-
-
-
-
+import Settings from './containers/settings';
+import SignIn from './components/login';
+import SignUp from './components/registration';
+import Singles from './containers/single';
+import Write from './containers/write';
+import { Posts } from './containers/posts';
+import {userContext} from './context/userContext'
 
 function App() {
+ 
   return (
-    <Fragment>
-    <Navbar/>
-    <LandingPage/>
+
+      
+    <Router>
+   <LandingPage /> 
+   <SignIn/>
+   <SignUp/>
+   <Singles/>
+   <Write/>
+   <Posts/>
+    <Home/>
+     <Settings />
+    </Router>
+    
    
-  
-  <Footer/>
-  
-    
     
    
-    
-    </Fragment>
     
   );
 }

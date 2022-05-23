@@ -1,29 +1,45 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
- const Post = () => {
+ const Post = ({post}) => {
+   const publicFolder="http://localhost:5000/images/"
   return (
     <div  className='post'>
-      <img
-      className='postImg'
-      src='https://images.unsplash.com/photo-1577375729152-4c8b5fcda381?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80'
-      alt=''
-      />
+      {post.photo &&(
+         <img
+         className='postImg'
+         src={publicFolder + post.photo}
+         alt=''
+         />
+
+      )}
+     
       <div className='postInfo'>
-        <div className='postCategories'>
-          <span className='postCategory'>Music</span>
-          <span className='postCategory'>Life</span>
+        <div className='postCategories'>{
+          post.categories.map(c=>(
+            <span className='postCategory'>{c.name}</span>
+
+          ))
+        }
+          
+          
 
         </div>
-        <span className='postTitle'>lorem lorem lorem lorem
+        {/* Linking the title to the story using it's id */}
+        <Link to={`/posts/${post._id}`} className="topListItem">
+        <span className='postTitle'>
+        {post.title}
         </span><hr/>
+
+        </Link>
+        
         <span className='postDate'>
-          1 day ago
+        { new Date(post.createdAt).toDateString()}
         </span>
       </div>
       <p className='postDescription'>
-Agree with @JeyDWork, this solution should be flagged as potential security risk. If your package.json doesn't contain confidential data now, who will guarantee that other developers won't put it there years later, without knowing that it is exposed to production? And even without any secrets, normally, a business doesn't want to expose information about its dependencies and devDependencies from the package.json to everybody - it makes it easier to 
-find vulnerabilities and penetrate the application.
+      {post.desc}
 </p>
     </div>
   )

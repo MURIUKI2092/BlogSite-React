@@ -10,11 +10,14 @@ const Footer = () => {
     <div className='footer'>
       <div className='footerDetails'>
         <div  className='details1'>
-        Title here and other Info
+        <img className=''
+        src="https://diginomica.com/sites/default/files/styles/article_images_desktop/public/images/2015-06/100daysbl.png.webp?itok=YDBNNFco"
+        alt=""
+        />
         </div>
         <div  className='details2'>
         <h2>Our Products</h2>
-          <ul class="footer-links">
+          <ul className="footer-links">
           <li className='footerListItem'>HOME</li>
               <li className='footerListItem'>ABOUT</li>
               <li className='footerListItem'>CONTACT</li>
@@ -25,7 +28,7 @@ const Footer = () => {
         </div>
         <div  className='details3'>
         <h2>Help & Support</h2>
-         <ul class="footer-links">
+         <ul className="footer-links">
          <li className='footerListItem'>HOME</li>
               <li className='footerListItem'>ABOUT</li>
               <li className='footerListItem'>CONTACT</li>
@@ -36,7 +39,7 @@ const Footer = () => {
         </div>
         <div  className='details4'>
         <h2>About</h2>
-          <ul class="footer-links">
+          <ul className="footer-links">
           <li className='footerListItem'>HOME</li>
               <li className='footerListItem'>ABOUT</li>
               <li className='footerListItem'>CONTACT</li>
